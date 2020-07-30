@@ -36,7 +36,7 @@ tag: Java关键字
 
 ### synchronized修饰一个代码块
 
-#### <u>*1.1 一个线程访问一个对象obj中的synchronize(this)同步代码块时，其它线程试图访问该对象obj的synchronize(this)同步块时将会被阻塞。*</u>
+#### *<u>1.1 一个线程访问一个对象obj中的synchronize(this)同步代码块时，其它线程试图访问该对象obj的synchronize(this)同步块时将会被阻塞。</u>*
 
 ```java
 class MyThread implements Runnable{
