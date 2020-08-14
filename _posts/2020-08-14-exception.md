@@ -21,36 +21,6 @@ tag: Java基础
 
 
 
-### **异常体系结构**
-
- * java.lang.Throwable
-
-   |-----java.lang.Error:一般不编写针对性的代码进行处理。
-
-   |-----java.lang.Exception:可以进行异常的处理
- * |------编译时异常(checked)
-
-   |-----IOException
-
-   |-----FileNotFoundException
-
-   |-----ClassNotFoundException
- * |------运行时异常(unchecked,RuntimeException)
-
-   |-----NullPointerException
-
-   |-----ArrayIndexOutOfBoundsException
-
-   |-----ClassCastException
-
-   |-----NumberFormatException
-
-   |-----InputMismatchException
-
-   |-----ArithmeticException
-
-
-
 ### 异常的处理
 
 #### 抓抛模型
@@ -83,10 +53,13 @@ try{
 
  1. finally是可选的。
   2. 使用try将可能出现异常代码包装起来，在执行过程中，一旦出现异常，就会生成一个对应异常类的对象，根据此对象
+
     的类型，去catch中进行匹配
   3. 一旦try中的异常对象匹配到某一个catch时，就进入catch中进行异常的处理。一旦处理完成，就跳出当前的
+
     try-catch结构（在没有写finally的情况）。继续执行其后的代码
   4. catch中的异常类型如果没有子父类关系，则谁声明在上，谁声明在下无所谓。
+
     catch中的异常类型如果满足子父类关系，则要求子类一定声明在父类的上面。否则，报错
   5. 常用的异常对象处理的方式： ① String  getMessage()    ② printStackTrace()
   6. 在try结构中声明的变量，再出了try结构以后，就不能再被调用
@@ -147,6 +120,7 @@ java.lang.ArrayIndexOutOfBoundsException: 10
 - 开发中如何选择使用try-catch-finally 还是使用throws？
 
      > -------如果父类中被重写的方法没有throws方式处理异常，则子类重写的方法也不能使用throws，意味着如果子类重写的方法中有异常，必须使用try-catch-finally方式处理。
+     >
      > -------执行的方法a中，先后又调用了另外的几个方法，这几个方法是递进关系执行的。我们建议这几个方法使用throws的方式进行处理。而执行的方法a可以考虑使用try-catch-finally方式进行处理。
 
 
